@@ -1,8 +1,8 @@
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', mainFunction);
-  } else {
+} else {
     mainFunction();
-  }
+};
   
   function mainFunction() {
     // *************************************************************************
@@ -11,8 +11,13 @@ if (document.readyState == 'loading') {
     //
     //      1.  Select the button with an id of #change-text-color and save
     //          it to a variable named changeColorButton.
+    const changeColorButton = document.querySelector("#change-text-color");
     //      2.  Add a click event listener to the button with an id #change-text-color.
-    //      3.  Add a function that will change the text color in the button to black.
+     //      3.  Add a function that will change the text color in the button to black.
+      changeColorButton.addEventListener("click", () => {
+        changeColorButton.style.color = "black";
+      });
+   
     // ***************************************************************************
     //  Exercise #2
     //      When user clicks on the change text color button the text in the button
@@ -22,6 +27,10 @@ if (document.readyState == 'loading') {
     //          variable named changeTextButton.
     //      2.  Add a click event listener to the button with an id #change-text-color.
     //      3.  Add a function that will change the text in the button to "Hello World".
+      const changeTextButton = document.querySelector("#change-text-color");
+      changeTextButton.addEventListener("click", () => {
+        changeTextButton.innerHTML = "Hello World";
+      });
     // ***************************************************************************
     //  Exercise #3
     //      When user clicks on the subscribe button, an alert box should pop up
@@ -31,6 +40,10 @@ if (document.readyState == 'loading') {
     //          variable named subscribeButton.
     //      2.  Add a click event that will display an alert box with the message
     //          "Thank you for subscribing".
+      const subscribeButton = document.querySelector("#subscribe-button");
+      subscribeButton.addEventListener("click", function() {
+        alert("Thank you for subscribing");
+      })
     // ***************************************************************************
     //  Exercise #4
     //      When user clicks each of the buttons on the card elements with class
@@ -41,6 +54,13 @@ if (document.readyState == 'loading') {
     //      2.  Add a click event to each button that will trigger a function which will cause the
     //          visibility property of the button clicked to be changed to hidden. You
     //          should use some sort of loop to add the event listener to each button.
+      const cardButton = document.querySelectorAll(".card-btn");
+      cardButton.forEach(btn => {
+        btn.addEventListener("click", function() {
+          btn.style.visibility = "hidden";
+        });
+      });
+      // cardButton.addEventListener
     // ***************************************************************************
     //  Exercise #5
     //      When user enters text in the input field, if the letter "h" is entered in
@@ -50,6 +70,10 @@ if (document.readyState == 'loading') {
     //          variable named userInput.
     //      2.  Add a keyup event that checks the value of the user input. If value contains
     //          the letter "h", display alert box. The .includes method may be usefull here.
+      const userInput = document.querySelector(".input-field");
+      userInput.addEventListener("keyup", function(e) {
+        if (e.key.includes("h")) alert(e.key);
+      });
     // ****************************************************************************
     //  Exercise #6
     //      When user moves mouse over the words "Subscribe To Our Newletter" the text color
@@ -58,6 +82,13 @@ if (document.readyState == 'loading') {
     //      1.  Select the h3 element and save it to a variable named newsletterHeader.
     //      2.  Add a mouseover event that will change the color of the text in the h3 element to red.
     //      3.  Add a mouseout event that will change the color of the text in the h3 element back to white.
+      const newsletterHeader = document.querySelector("h3");
+      newsletterHeader.addEventListener("mouseover", function() {
+        newsletterHeader.style.color = "red";
+      });
+      newsletterHeader.addEventListener("mouseout", function() {
+        newsletterHeader.style.color = "white";
+      });
     // *****************************************************************************
     //  Exercise #7
     //      When user clicks on the <Add div> button a new div element should be created
@@ -67,4 +98,15 @@ if (document.readyState == 'loading') {
     //          variable named parentDiv so that you are able to append your new div to the page.
     //      3.  Add a click event to the addDiv button which will run a function creating a new div
     //          with a <p> tag containing some text.
-  }
+
+    const addDiv = document.querySelector("#add-element");
+    const parentDiv = document.querySelector('#add-element-section');
+    addDiv.addEventListener("click", function(){
+      // const newP = document.createElement('p');
+      // newP.innerText = "Hello! I am a new element.";
+      // parentDiv.appendChild(newP);
+      const newP = document.createElement('div');
+      newP.innerHTML = "<p> Hello! I am a new div. </p>";
+      parentDiv.appendChild(newP);
+    });
+  };
